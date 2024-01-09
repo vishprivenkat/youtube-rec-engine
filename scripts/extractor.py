@@ -1,23 +1,18 @@
-import pafy
 import pickle
 import pandas as pd
+import argparse 
 
-file = open('links.pickle','rb')
-links = pickle.load(file)
-file.close()
+class Extractor: 
+  def __init__(self):
+    pass 
 
-dataset = pd.DataFrame(columns = ["link","title","category","author"])
 
-i = 1
-count_couldnt_collect = 0
-for link in links:
-    try:
-        video = pafy.new(link)
-        dataset = dataset.append({"link":link, "title":video.title, "category":video.category, "author":video.author}, ignore_index=True)
-        print("*", end=" ")
-        i+=1
-    except Exception as e:
-        count_couldnt_collect+=1
-        print("Skipping to the next Video")
+def main(): 
+    parser = argparse.ArgumentParser(description = 'Script to extract data from YouTube using the YouTube Data API. This script will require that you provide your own API_KEY.') 
+    parser.add_argument('-json_file', type=str, default='./data/youtube_video_results.json', help='path to the json file that contains the scrapped data from YouTube')
+    parser.add_argument('')
 
-dataset.to_csv('base_data.csv')
+if __name__ == '__main__': 
+  main() 
+
+
