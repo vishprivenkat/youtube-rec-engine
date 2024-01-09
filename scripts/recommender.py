@@ -6,9 +6,7 @@ import numpy as np
 import argparse 
 
 
-# Download NLTK stop words (run this once)
-# import nltk
-# nltk.download('stopwords')
+
 class Recommender: 
   def __init__(self): 
     self.preprocessor = Preprocessor() 
